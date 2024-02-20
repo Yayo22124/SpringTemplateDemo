@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ListaController {
 
     @GetMapping("/")
-    public String getIndex() {
+    public String getIndex(org.springframework.ui.Model model) {
         List<Usuario> usuarios = new ArrayList<Usuario>();
         usuarios.add(new Usuario(UUID.randomUUID(), "Yayo", "Haziel Ortiz Ramírez"));
         usuarios.add(new Usuario(UUID.randomUUID(), "Mordo", "Irving Morales Domínguez"));
@@ -30,7 +30,7 @@ public class ListaController {
         usuarios.add(new Usuario(UUID.randomUUID(), "Carballo", "Carlos Carballo Canales"));
 
         
-
+        model.addAttribute("usuarios", usuarios);
         return "index";
     }
 }
